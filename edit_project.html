@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+
+{% if project %}
+<form method="POST">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{ project.name }}" required><br><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="4" required>{{ project.description }}</textarea><br><br>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+        <option value="Pending" {% if project.status=="Pending" %}selected{% endif %}>Pending</option>
+        <option value="In Progress" {% if project.status=="In Progress" %}selected{% endif %}>In Progress</option>
+        <option value="Done" {% if project.status=="Done" %}selected{% endif %}>Done</option>
+    </select><br><br>
+
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline" value="{{ project.deadline }}" required><br><br>
+
+    <button type="submit">Update Project</button>
+</form>
+{% else %}
+<p>Project not found!</p>
+{% endif %}
+
+<p><a href="/projects">← Back to Projects</a></p>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+
+{% if task %}
+<form method="POST">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" value="{{ task.title }}" required><br><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" rows="4" required>{{ task.description }}</textarea><br><br>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+        <option value="Pending" {% if task.status=="Pending" %}selected{% endif %}>Pending</option>
+        <option value="In Progress" {% if task.status=="In Progress" %}selected{% endif %}>In Progress</option>
+        <option value="Done" {% if task.status=="Done" %}selected{% endif %}>Done</option>
+    </select><br><br>
+
+    <label for="project_id">Project:</label>
+    <select id="project_id" name="project_id" required>
+        {% for project in projects %}
+        <option value="{{ project.id }}" {% if project.id==task.project_id %}selected{% endif %}>{{ project.name }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    <button type="submit">Update Task</button>
+</form>
+{% else %}
+<p>Task not found!</p>
+{% endif %}
+
+<p><a href="/tasks">← Back to Tasks</a></p>
+{% endblock %}

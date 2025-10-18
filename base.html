@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+  <title>{{ title if title else "Project Management System" }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="navbar">
+      <a href="/">🏠 Home</a>
+      <a href="/dashboard">📊 Dashboard</a>
+      <a href="/projects">📋 Projects</a>
+      <a href="/tasks">🧾 Tasks</a>
+      <a href="/add_project">➕ Add Project</a>
+      <a href="/add_task">📝 Add Task</a>
+  </div>
+
+  <div class="container">
+      {% block content %}{% endblock %}
+  </div>
+
+  <footer>
+      <p>📘 Project Management System © 2025</p>
+  </footer>
+</body>
+</html>

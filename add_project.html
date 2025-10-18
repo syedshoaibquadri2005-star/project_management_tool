@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>➕ Add Project</h2>
+
+<form method="POST">
+    <label for="name">Project Name:</label>
+    <input id="name" name="name" placeholder="Project Name" required><br><br>
+
+    <label for="description">Description:</label>
+    <input id="description" name="description" placeholder="Description" required><br><br>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+        <option>To Do</option>
+        <option>In Progress</option>
+        <option>Done</option>
+    </select><br><br>
+
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline" required><br><br>
+
+    <button type="submit">Add Project</button>
+</form>
+
+<p><a href="/projects">⬅ Back to Projects</a></p>
+{% endblock %}

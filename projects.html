@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>📋 Project List</h2>
+<a href="/add_project">➕ Add Project</a><br><br>
+
+{% if projects %}
+    {% for p in projects %}
+    <div class="card">
+        <b>{{ p.name }}</b><br>
+        Status: {{ p.status }}<br>
+        Deadline: {{ p.deadline }}<br>
+        <a href="/edit_project/{{ p.id }}">✏️ Edit</a> |
+        <a href="/delete_project/{{ p.id }}">🗑️ Delete</a>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No projects available yet.</p>
+{% endif %}
+{% endblock %}

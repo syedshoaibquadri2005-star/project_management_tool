@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>🧾 Task List</h2>
+<a href="/add_task">➕ Add Task</a><br><br>
+
+{% if tasks %}
+    {% for t in tasks %}
+    <div class="card">
+        <b>{{ t.title }}</b><br>
+        Project: {{ t.project_name }}<br>
+        Status: {{ t.status }}<br>
+        Deadline: {{ t.deadline }}<br>
+        <a href="/edit_task/{{ t.id }}">✏️ Edit</a> |
+        <a href="/delete_task/{{ t.id }}">🗑️ Delete</a>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>No tasks added yet.</p>
+{% endif %}
+{% endblock %}
